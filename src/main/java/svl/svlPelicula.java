@@ -23,10 +23,13 @@ public class svlPelicula extends HttpServlet {
     	HttpSession session = request.getSession();
     	
     	String id =request.getParameter("id");
-    	if(id !=null && (id.equals("cartelera") || id.equals("estrenos"))) {
+    	Object data =null;
+    	if(id !=null ) {
+    		if (id.equals("cartelera") || id.equals("estrenos"))
      
-    		Object data =new dao.PeliculaDAO().getPeliculas(id.equals("cartelera")? 1 : 2 , true);
-    		session.setAttribute("id", data == null? null :  "peliculas");
+    		data =new dao.PeliculaDAO().getPeliculas(id.equals("cartelera")? 1 : 2 , true);
+    		else data =new dao.PeliculaDAO().getPelicula(id, false);
+    		session.setAttribute("id", data == null? null :id.equals("cartelera") || id.equals("estrenos")?  "peliculas":"pelicula");
     		session.setAttribute("data", data);
     }
     	

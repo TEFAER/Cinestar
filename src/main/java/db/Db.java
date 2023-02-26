@@ -1,4 +1,5 @@
 package db;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -59,6 +60,39 @@ public class Db {
 	public String[] getRegistro() {
 		return null;
 	}
+	
+	
+	public String[] getRegistro2() {
+		if ( cn == null ) return null;
+		
+		try {
+			ResultSet rs = ps.executeQuery();
+			if ( rs.next() ) {
+				int columnas = rs.getMetaData().getColumnCount();
+				String[] nRegistro = new String[columnas];
+				
+					for( int columna=0; columna < columnas; columna++ )
+						nRegistro[columna] = rs.getString(columna + 1).trim();
+				
+				return nRegistro;
+			}
+			
+		} catch (SQLException e) { e.printStackTrace(); }
+		
+		return null;
+	}
 
-}
+	public String getCampo() {
+		if(cn ==null || ps ==null) return null;
+		
+		try {
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) return rs.getString(1).trim();
+			
+		}catch (SQLException e) {e.printStackTrace();}
+		
+		return null;
+	}
 
+	
+	}

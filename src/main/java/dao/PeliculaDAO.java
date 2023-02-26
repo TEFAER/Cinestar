@@ -22,4 +22,20 @@ public class PeliculaDAO {
 	
 	
 	} 
+	
+	public Object getPelicula(String id, boolean bEntidad) {
+		db.Sentencia( String.format("call sp_getPelicula(%s)", id));
+		String[ ] apelicula = db.getRegistro2();
+		if(apelicula ==null)return null;
+		
+		db.Sentencia(String.format("select getGenerosDetalle('%s')", apelicula[ 4] ));
+				apelicula[ 4] = db.getCampo();
+		if (!bEntidad) return apelicula;
+		
+
+		
+		return new Pelicula(apelicula);
+		
+		
+		}
 }
