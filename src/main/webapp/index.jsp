@@ -11,7 +11,6 @@
 		<title>Multicines Cinestar</title>
 	</head>
 	<body>
-
 		<%@ include file="WEB-INF/header.jsp" %>>
 	
 		<div class="contenido">
