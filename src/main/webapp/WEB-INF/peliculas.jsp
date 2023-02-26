@@ -14,7 +14,7 @@ for(Pelicula pelicula: peliculas){
 						<p><%= pelicula.getSinopsis()%></p>
 						<br/>
                        	<div class="boton-pelicula"> 
-                       		<a href="svLPelicula?id=<%= pelicula.getId()%>" >
+                       		<a href="svlPelicula?id=<%= pelicula.getId()%>" >
                        			<img src="img/varios/btn-mas-info.jpg" width="120" height="30" alt="Ver info"/>
                        		</a>
                			</div>
